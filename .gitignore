@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+storage/imports/
+storage/uploads/
+data/legacy/*.xlsx
+data/legacy/*.xls
+*.log
+.DS_Store
+coverage/
+playwright-report/
+test-results/
+.vscode/settings.json

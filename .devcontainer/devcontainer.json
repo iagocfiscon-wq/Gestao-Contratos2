@@ -1,0 +1,20 @@
+{
+  "name": "C-FISCON · Gestão de Contratos",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [5173, 3333, 5432],
+  "portsAttributes": {
+    "5173": { "label": "C-FISCON Web", "onAutoForward": "openBrowser" },
+    "3333": { "label": "C-FISCON API", "onAutoForward": "notify" },
+    "5432": { "label": "PostgreSQL", "onAutoForward": "silent" }
+  },
+  "postCreateCommand": "corepack enable && pnpm install && cp -n .env.example .env || true && docker compose up -d db",
+  "postStartCommand": "docker compose up -d db",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "bracketpaircolordlw.bracket-pair-color-dlw"]
+    }
+  }
+}
