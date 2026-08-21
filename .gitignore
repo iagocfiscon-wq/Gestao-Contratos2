@@ -13,3 +13,5 @@ coverage/
 playwright-report/
 test-results/
 .vscode/settings.json
+
+validation-artifacts/
