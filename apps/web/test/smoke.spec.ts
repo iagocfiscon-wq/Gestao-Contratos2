@@ -82,10 +82,9 @@ test('administrador executa CRUD, controle de versão, lixeira, auditoria e expo
   expect(restoredPayload.data.deleted_at).toBeNull();
 
   await page.getByRole('button', { name: 'Histórico' }).click();
-  await expect(page.getByText('CONTRATO_CRIADO')).toBeVisible();
-  await expect(page.getByText('CONTRATO_ATUALIZADO')).toBeVisible();
-  await expect(page.getByText('CONTRATO_EXCLUIDO')).toBeVisible();
-  await expect(page.getByText('CONTRATO_RESTAURADO')).toBeVisible();
+  for (const action of ['CONTRATO_CRIADO', 'CONTRATO_ATUALIZADO', 'CONTRATO_EXCLUIDO', 'CONTRATO_RESTAURADO']) {
+    await expect(page.locator('td').filter({ hasText: action }).first()).toBeVisible();
+  }
 
   await page.getByRole('button', { name: 'Exportação' }).click();
   await expect(page.getByRole('heading', { name: 'Leve a carteira com você' })).toBeVisible();
