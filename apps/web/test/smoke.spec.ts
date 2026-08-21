@@ -36,8 +36,8 @@ test('administrador executa CRUD, controle de versão, lixeira, auditoria e expo
   await page.getByLabel('Número do contrato *').fill(contractNumber);
   await page.getByLabel('Ano').selectOption('2026');
   await page.getByLabel('Contratado').fill('Empresa Sintética E2E LTDA');
-  await page.getByLabel('Objeto').fill('Serviço sintético de validação');
-  await page.getByLabel('Descrição do objeto').fill('Registro criado exclusivamente pelo teste automatizado.');
+  await page.getByLabel('Objeto', { exact: true }).fill('Serviço sintético de validação');
+  await page.getByLabel('Descrição do objeto', { exact: true }).fill('Registro criado exclusivamente pelo teste automatizado.');
   await page.getByLabel('Início da vigência').fill('2026-01-01');
   await page.getByLabel('Final da vigência').fill('2026-12-31');
   await page.getByLabel('Valor original').fill('1000');
