@@ -27,7 +27,8 @@ export function buildServer() {
 
 const app = buildServer();
 const port = Number(process.env.PORT ?? 3333);
-if (process.env.NODE_ENV !== 'test') {
+const isTestRuntime = process.env.NODE_ENV === 'test' || process.env.VITEST === 'true';
+if (!isTestRuntime) {
   app.listen({ port, host: process.env.HOST ?? '0.0.0.0' }).then(() => app.log.info(`C-FISCON API ouvindo na porta ${port}`)).catch((error) => { app.log.error(error); process.exit(1); });
 }
 
